@@ -11,6 +11,9 @@ import {v4} from 'uuid';
 
 import About from './components/pages/About';
 
+import context from './context';
+import UpdateContext from './components/layout/updateContext';
+
 class App extends Component {
   state = {
     todos: [{
@@ -28,8 +31,14 @@ class App extends Component {
       title: 'task3',
       completed: true
     }
-    ]
+    ],
+    value:'default value',
+    updateVal: (e) =>{
+      this.setState({value:e.target.value})
+      // console.log("oush",e.target.value)
+    }
   }
+
 
   markComplete = (id) => {
         // console.log(id);
@@ -64,9 +73,12 @@ addTodo = (e) =>{
   render() {
     console.log(this.state);
     return (
-      <Router>
-      <div>
-       <Header/>
+      <context.Provider value={this.state}>
+        <Router>
+        <Header />
+      <div >
+        
+       
         <Route exact path="/" render={props =>(
           <React.Fragment>
              
@@ -78,11 +90,12 @@ addTodo = (e) =>{
         )} />
         
         <Route component={About} path='/about' />
-          
-        
        </div>
 
       </Router>
+      <UpdateContext/>
+
+      </context.Provider>
       
     );
   }

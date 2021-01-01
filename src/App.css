@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+div{
+  padding: 5% 10% 5% 10%;
+  margin: auto;
+  background-color: rgb(55, 94, 167);
+  float: none;
+  text-align:'center';
+
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
